@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+	<title>Primer App con Angular</title>
+	<script src="resources/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/bulma.css">
+	<script>
+		angular.module('App', [])
+			.controller('appController', function($scope){
+				$scope.nombre = "Guxor";
+			});
+	</script>
+</head>
+<body ng-controller="appController">
+<div class="container">
+	{{"Hola " + nombre}}
+</div>
+</body>
+</html>
