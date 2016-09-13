@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+	<title>Segundo App con Angular</title>
+	<script src="resources/angular.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/bulma.css">
+	<script>
+		angular.module('App', [])
+			.controller('appController', function($scope){
+				$scope.nombre = "Guxor";
+				$scope.nuevoComentario = {};
+				$scope.comentarios = [
+					{
+						contenido: 'Comentario 1',
+						autor: 'Pedro Picapiedra'
+					},
+					{
+						contenido: 'Comentario 2',
+						autor: 'Pablo Marmol'
+					},
+				];
+				$scope.agregarComentario = function() {
+					$scope.comentarios.push($scope.nuevoComentario);
+					$scope.nuevoComentario = {};
+				};
+			});
+	</script>
+</head>
+<body ng-controller="appController">
+<div class="container">
+
+<form>
+	<label for="txtComentario">Comentario:
+	<input type="text" ng-model="nuevoComentario.contenido">
+	</label>
+	<label for="txtAutor">Autor:
+	<input type="text" ng-model="nuevoComentario.autor">
+	</label>
+	<button ng-click="agregarComentario()">Enviar</button>
+</form>
+
+<br><hr>
+<ul>
+	<li ng-repeat="comentario in comentarios">
+		{{comentario.contenido}} - {{comentario.autor}}
+	</li>
+</ul>
+
+
+</div>
+</body>
+</html>
